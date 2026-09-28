@@ -1,0 +1,16 @@
+FROM mambaorg/micromamba:2.3-debian12-slim
+
+# Copy the environment file (owned by the non-root "mamba" user)
+COPY --chown=$MAMBA_USER:$MAMBA_USER environment.yml /tmp/environment.yml
+
+# Install into the image's default (base) env and clean up caches
+RUN micromamba install -y -n base -f /tmp/environment.yml && \
+    micromamba clean --all --yes
+
+# Makes later RUN commands execute inside the activated env
+ARG MAMBA_DOCKERFILE_ACTIVATE=1
+
+WORKDIR /workspace
+EXPOSE 8888
+
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--no-browser", "--port=8888"]

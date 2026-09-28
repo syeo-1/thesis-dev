@@ -1,0 +1,15 @@
+# use only if explicitly want gpu usage
+# other file will choose for you if it detects gpu
+name: geo_env_gpu
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.13
+  - geopandas=1.1
+  - shapely=2.1
+  - pyproj=3.7
+  - rasterio=1.4
+  - jupyterlab=4
+  - pytorch-gpu=2.*
+  - cuda-version=12.6   # must be <= the CUDA version shown by nvidia-smi
