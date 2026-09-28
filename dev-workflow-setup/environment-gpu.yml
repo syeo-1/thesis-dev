@@ -12,4 +12,6 @@ dependencies:
   - rasterio=1.4
   - jupyterlab=4
   - pytorch-gpu=2.*
-  - cuda-version=12.6   # must be <= the CUDA version shown by nvidia-smi
+  # must be <= the CUDA version shown by nvidia-smi for #.
+  # Would be different person to person
+  - cuda-version=##.#   
