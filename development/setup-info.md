@@ -9,8 +9,8 @@
 - the plan is to use docker with miniconda
 -  why docker?
     - docker can be used to set up standardized development environments so that everyone can be on the same page for analysis in terms of software packages that people need. In short, a docker container isolates a section of the operating system so that nothing else touches it. This ensures all versions of libraries between people using the same container remain the same, so there should be no issues in sharing code and not being able to run things
-- why miniconda?
-    - conda is great for managing all the packages for data analysis. However, not all packages may be necessary. To save on space, miniconda allows you to manually install only the packages that you deem are necessary for your analysis. There will be a standardized list still for this container. I believe Pytorch, Keras, and any other libary for doing deep learning will take up considerable space.
+- why micromamba?
+    - conda is great for managing all the packages for data analysis. However, not all packages may be necessary. To save on space, miniconda also allows you to manually install only the packages that you deem are necessary for your analysis. Micromamba is even smaller by leaving out Python and allows package resolution to happen faster, saving both storage space and time for creating a container
 
 ## Windows set up!
 
