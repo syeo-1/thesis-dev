@@ -1,14 +1,14 @@
 FROM mambaorg/micromamba:2.3-debian12-slim
 
-# Copy the environment file (owned by the non-root "mamba" user)
-COPY --chown=$MAMBA_USER:$MAMBA_USER environment.yml /tmp/environment.yml
+ARG ENV_FILE=environment-gpu.yml
+# Pretend a CUDA driver exists during the build (must match cuda-version in the yml)
+ARG CUDA_OVERRIDE=12.5
 
-# Install into the image's default (base) env and clean up caches
-RUN micromamba install -y -n base -f /tmp/environment.yml && \
+COPY --chown=$MAMBA_USER:$MAMBA_USER ${ENV_FILE} /tmp/environment.yml
+
+RUN CONDA_OVERRIDE_CUDA=${CUDA_OVERRIDE} \
+    micromamba install -y -n base -f /tmp/environment.yml && \
     micromamba clean --all --yes
-
-# Makes later RUN commands execute inside the activated env
-ARG MAMBA_DOCKERFILE_ACTIVATE=1
 
 WORKDIR /workspace
 EXPOSE 8888
