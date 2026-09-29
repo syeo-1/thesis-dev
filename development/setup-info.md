@@ -39,7 +39,7 @@
             - IMPORTANT NOTE!!!!:  remember the CUDA version output in the headers for the table output. use that number when running the command with CUDA_OVERRIDE. Replace the value in the command with the number you see in the header (or a value below). This version is the highest version your drivers on your computer will support.
     - GPU usage
         - if you have a dedicated gpu, you can use it for saving training time especially with libraries like pytorch, so here's some additional set up to use it. By default the CPU is used when the image is created.
-        - to create an image that assumes the existence of a dedicated gpu, run the following build command instead: `docker build -t geo_env --build-arg CUDA_OVERRIDE=##.# .`. Replace ##.# with the numbers from the output of the nvidia-sme command from earlier
+        - to create an image that assumes the existence of a dedicated gpu, run the following build command instead: `docker build --no-cache -t geo_env .`. Be sure you included the dot for the directory!
         - then run it like so: `docker run --rm --gpus all -p 127.0.0.1:8888:8888 -v "${PWD}:/workspace" geo_env`
     - verify your dedicated GPU is being used by the application created from the dockerfile
     
