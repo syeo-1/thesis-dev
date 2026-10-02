@@ -13,3 +13,4 @@ dependencies:
   - jupyterlab=4
   - pytorch-gpu=2.*
   - cuda-version=12.5
+  - torchgeo=0.10
