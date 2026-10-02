@@ -12,6 +12,10 @@
 - fresh docker build
 `docker build --no-cache -t geo_env .`
 
+## adding in new libraries or packages to the container
+
+- need to figure this out!
+
 ## potentially useful resources
 
 https://github.com/Abdallah-M-Ali/Mineral-Prospectivity-Mapping-ML/blob/main/Data_preprocessing.py
