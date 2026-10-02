@@ -14,8 +14,17 @@
 
 ## adding in new libraries or packages to the container
 
-- need to figure this out!
+- for now, for python packages, add them as necessary via pip from within the container
+    - that way, it's quick to do strict development work
+- rebuild images at night since to truly add a package to the container requires a rebuild of the package which can take an hour to run
+    - this requires editing the environment.yml file (in this case environment-gpu.yml) and then rerunning the build image command
+        - that command is: `docker build --build-arg ENV_FILE=environment-gpu.yml -t geo_env`
 
 ## potentially useful resources
 
 https://github.com/Abdallah-M-Ali/Mineral-Prospectivity-Mapping-ML/blob/main/Data_preprocessing.py
+
+## other data
+- I took canada land boundary data from 2021 census: https://www12.statcan.gc.ca/census-recensement/2021/geo/sip-pis/boundary-limites/index2021-eng.cfm?Year=21
+- also, this data set to cover lakes and water bodies within Canada: https://www.hydrosheds.org/products/hydrolakes
+- The above two data sources are used to ensure negative label points are on land and within Canada
